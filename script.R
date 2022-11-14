@@ -28,9 +28,9 @@ print(df2, 20)
 # combien de professions
 print("Nombre de professions :")
 print(summarise(df2,length(unique(unlist(cs3[!is.na(cs1)])))))
-print("Nombre de professions :'')
-"print(summarise(df2,length(unique(unlist(cs3[!is.na(cs2)])))))
-      oprint("Nombre de professions :")
+print("Nombre de professions :")
+print(summarise(df2,length(unique(unlist(cs3[!is.na(cs2)])))))
+      print("Nombre de professions :")
       print(summarise(df2,length(unique(unlist(cs3[!is.na(cs3)])))))
       
       print.data.frame <- summarise(group_by(df2, aged), n())
@@ -43,7 +43,7 @@ print("Nombre de professions :'')
       df2 %>% select(aged) %>% ggplot(.) + geom_histogram(aes(x = 5*floor(as.numeric(aged)/5)), stat = "count")
       
       ggplot(df2[as.numeric(df2$aged)>50,c(3,4)], aes(
-        x=as.numeric(aged)#x = as.numeric(aged) - as.numeric(aged) %% 5,
+        x=as.numeric(aged),#x = as.numeric(aged) - as.numeric(aged) %% 5
         y = ..density.., fill = factor(decennie_a_partir_annee(as.numeric(aemm)))), alpha = 0.2) + geom_histogram()#position = "dodge") + scale_fill_viridis_d()
       
       
