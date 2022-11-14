@@ -4,6 +4,7 @@ library(rlang)
 library(forcats)
 library(MASS)
 library(ggplot2)
+library(gt)
 
 source("R/functions_checkpoint.R",encoding = "UTF-8")
 
