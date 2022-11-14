@@ -1,4 +1,4 @@
-# df_parquet <- 
+# df_parquet <-
 #   aws.s3::s3read_using(
 #     FUN = arrow::read_parquet,
 #     object = "/diffusion/RP/2016/individu_reg/individu_reg.parquet",
@@ -20,4 +20,7 @@ df <-
     opts = list("region" = "")
   )
 
-readr::write_csv2(df, "individu_reg.csv")
+# readr::write_csv2(df, "individu_reg.csv")
+
+arrow::write_parquet(x=df,
+                     sink="individu_reg.parquet")
