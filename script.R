@@ -105,10 +105,10 @@ df2$sexe <-
   fct_recode(df2$sexe, "Homme" = "0", "Femme" = "1")
 
 # fonction de stat agregee
-ignoreNA <- T
+ignoreNA <- TRUE
 fonction_de_stat_agregee <- function(a, b = "moyenne", ...) {
   ignoreNA <<- !ignoreNA
-  checkvalue <- F
+  checkvalue <- FALSE
   for (x in c("moyenne", "variance", "ecart-type", "sd", "ecart type")) {
     checkvalue <- (checkvalue | b == x)
   }
@@ -129,10 +129,10 @@ fonction_de_stat_agregee(rnorm(10), "ecart type")
 fonction_de_stat_agregee(rnorm(10), "variance")
 
 
-fonction_de_stat_agregee(df %>% filter(sexe == "Homme") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = T)
-fonction_de_stat_agregee(df2 %>% filter(sexe == "Femme") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = T)
-fonction_de_stat_agregee(df2 %>% filter(sexe == "Homme" & couple == "2") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = T)
-fonction_de_stat_agregee(df2 %>% filter(sexe == "Femme" & couple == "2") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = T)
+fonction_de_stat_agregee(df %>% filter(sexe == "Homme") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = TRUE)
+fonction_de_stat_agregee(df2 %>% filter(sexe == "Femme") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = TRUE)
+fonction_de_stat_agregee(df2 %>% filter(sexe == "Homme" & couple == "2") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = TRUE)
+fonction_de_stat_agregee(df2 %>% filter(sexe == "Femme" & couple == "2") %>% mutate(aged = as.numeric(aged)) %>% pull(aged), na.rm = TRUE)
 
 api_pwd <- "trotskitueleski$1917"
 
@@ -141,6 +141,6 @@ library(MASS)
 df3 <- df2 %>%
   select(surf, cs1, ur, couple, aged) %>%
   filter(surf != "Z")
-df3[, 1] <- factor(df3$surf, ordered = T)
+df3[, 1] <- factor(df3$surf, ordered = TRUE)
 df3[, "cs1"] <- factor(df3$cs1)
 polr(surf ~ cs1 + factor(ur), df3 %>% filter(couple == "2" && as.numeric(aged > 40 && aged < 60)))
